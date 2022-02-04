@@ -1,4 +1,5 @@
 ﻿using api_login.Application;
+using api_login.Application.Interface;
 using api_login.Model;
 using api_login.Repository.Model;
 using Microsoft.AspNetCore.Http;
@@ -7,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace api_login.Controllers
 {
     [ApiController]
@@ -15,9 +15,9 @@ namespace api_login.Controllers
     public class UserController : Controller
     {
 
-        public readonly AppUser app;
+        public readonly IAppUser app;
 
-        public UserController(AppUser _app)
+        public UserController(IAppUser _app)
         {
             app = _app;
         }
@@ -29,13 +29,16 @@ namespace api_login.Controllers
         {
             try
             {
-                User ret = app.Cadastrar(user);
+                Response ret = app.Cadastrar(user);
 
-                return Ok(new Response
+                if (ret.success)
                 {
-                    Success = true,
-                    Result = user
-                });
+                    return Ok(ret);
+                }
+                else
+                {
+                    return BadRequest(ret);
+                }
             }
             catch(Exception e)
             {

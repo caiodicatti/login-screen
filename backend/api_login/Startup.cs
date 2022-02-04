@@ -1,6 +1,8 @@
 using api_login.Application;
+using api_login.Application.Interface;
 using api_login.Repository;
 using api_login.Repository.Context;
+using api_login.Repository.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,8 +41,8 @@ namespace api_login
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "api_login", Version = "v1" });
             });
 
-            services.AddTransient<UserRepository>();
-            services.AddTransient<AppUser>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IAppUser, AppUser>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

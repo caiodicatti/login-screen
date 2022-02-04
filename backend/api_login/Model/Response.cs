@@ -7,7 +7,9 @@ namespace api_login.Model
 {
     public class Response
     {
-        public bool Success { get; set; }
-        public dynamic Result { get; set; }
+        public bool success { get; set; }
+        public int statusCode { get; set; }
+        public dynamic result { get; set; }
+        public string message { get; set; }
     }
 }

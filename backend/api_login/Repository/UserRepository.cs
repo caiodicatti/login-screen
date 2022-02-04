@@ -1,4 +1,5 @@
 ﻿using api_login.Repository.Context;
+using api_login.Repository.Interface;
 using api_login.Repository.Model;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace api_login.Repository
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
         private readonly DatabaseContext context;
 

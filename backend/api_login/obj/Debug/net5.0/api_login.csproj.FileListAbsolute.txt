@@ -1,4 +1,3 @@
-C:\dev\LoginScreen\backend\api_login\obj\Debug\net5.0\api_login.csproj.AssemblyReference.cache
 C:\dev\LoginScreen\backend\api_login\obj\Debug\net5.0\api_login.GeneratedMSBuildEditorConfig.editorconfig
 C:\dev\LoginScreen\backend\api_login\obj\Debug\net5.0\api_login.AssemblyInfoInputs.cache
 C:\dev\LoginScreen\backend\api_login\obj\Debug\net5.0\api_login.AssemblyInfo.cs
