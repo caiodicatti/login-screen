@@ -1,7 +1,11 @@
+using api_login.Application;
+using api_login.Repository;
+using api_login.Repository.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,11 +31,16 @@ namespace api_login
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddDbContext<DatabaseContext>(options =>
+               options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "api_login", Version = "v1" });
             });
+
+            services.AddTransient<UserRepository>();
+            services.AddTransient<AppUser>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +58,8 @@ namespace api_login
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseDeveloperExceptionPage();
 
             app.UseEndpoints(endpoints =>
             {
