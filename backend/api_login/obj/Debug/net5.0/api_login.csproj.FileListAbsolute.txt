@@ -46,4 +46,3 @@ C:\dev\LoginScreen\backend\api_login\obj\Debug\net5.0\api_login.pdb
 C:\dev\LoginScreen\backend\api_login\obj\Debug\net5.0\api_login.genruntimeconfig.cache
 C:\dev\LoginScreen\backend\api_login\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\dev\LoginScreen\backend\api_login\bin\Debug\net5.0\Microsoft.Bcl.HashCode.dll
-C:\dev\LoginScreen\backend\api_login\obj\Debug\net5.0\api_login.csproj.AssemblyReference.cache

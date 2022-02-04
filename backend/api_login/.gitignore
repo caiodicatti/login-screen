@@ -2,5 +2,6 @@
 
 # compiled output
 /bin
-
+/obj
+/.vs
 
