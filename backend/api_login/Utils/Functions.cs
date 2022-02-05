@@ -32,7 +32,7 @@ namespace api_login.Utils
                 retorno.Verifica = false;
                 retorno.Mensagem = "Nome não pode ser vazio";
             }
-            else if (user.email.IndexOf("@") == -1 || user.email == "")
+            else if (!IsValidEmail(user.email))
             {
                 retorno.Verifica = false;
                 retorno.Mensagem = "E-mail inválido";
@@ -44,6 +44,19 @@ namespace api_login.Utils
             }            
 
             return retorno;
+        }
+
+        public bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
