@@ -6,3 +6,13 @@ body {
 .btn-default {
   width: 100%;
 }
+
+.invalid-feedback {
+  bottom: -14px !important;
+  left: -2px !important;
+  text-align: center;
+}
+
+.danger {
+  border-color: red !important;
+}
