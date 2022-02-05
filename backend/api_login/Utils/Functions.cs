@@ -58,5 +58,19 @@ namespace api_login.Utils
                 return false;
             }
         }
+
+        public string GeneratorPassword()
+        {
+            string chars = "abcdefghjkmnpqrstuvwxyz023456789";
+            string pass = "";
+
+            Random random = new Random();
+            for (int f = 0; f < 10; f++)
+            {
+                pass += chars.Substring(random.Next(0, chars.Length - 1), 1);
+            }
+
+            return pass;
+        }
     }
 }

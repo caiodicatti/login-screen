@@ -11,5 +11,7 @@ namespace api_login.Application.Interface
     {
         public Response Cadastrar(User user);
         public Response Login(Authentication authentication);
+        public Response RecuperarSenha(String email);
+        public Response AlteraSenha(RecoverPasswordLink recoverPasswordLink);
     }
 }

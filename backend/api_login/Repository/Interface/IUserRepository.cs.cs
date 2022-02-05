@@ -10,6 +10,7 @@ namespace api_login.Repository.Interface
     public interface IUserRepository
     {
         public User Cadastro(User user);
-        public User Login(Authentication authentication);
+        public User GetUserByEmail(String email);
+        public bool AlterPassword(RecoverPasswordLink recoverPasswordLink);
     }
 }

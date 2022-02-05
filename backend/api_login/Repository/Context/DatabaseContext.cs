@@ -1,4 +1,5 @@
-﻿using api_login.Repository.Model;
+﻿using api_login.Model.Tables;
+using api_login.Repository.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -19,5 +20,6 @@ namespace api_login.Repository.Context
         }
 
         public DbSet<User> Usuario { get; set; }
+        public DbSet<RecoverPassword> RecoverPassword { get; set; }
     }
 }

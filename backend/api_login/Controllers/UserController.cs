@@ -69,20 +69,51 @@ namespace api_login.Controllers
             }
         }
 
-        //// POST: UserController/Create
-        //[HttpPost]
-        ////[ValidateAntiForgeryToken]
-        //public ActionResult AlteraSenha(IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+        [HttpPost("recuperarsenha")]
+        //[ValidateAntiForgeryToken]
+        public ActionResult RecuperarSenha(Authentication authentication)
+        {
+            try
+            {
+                Response ret = app.Login(authentication);
+
+                if (ret.success)
+                {
+                    return Ok(ret);
+                }
+                else
+                {
+                    return BadRequest(ret);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        [HttpPost("linkrecuperacao")]
+        //[ValidateAntiForgeryToken]
+        public ActionResult AlteraSenha(RecoverPasswordLink recoverPasswordLink)
+        {
+            try
+            {
+                Response ret = app.AlteraSenha(recoverPasswordLink);
+
+                if (ret.success)
+                {
+                    return Ok(ret);
+                }
+                else
+                {
+                    return BadRequest(ret);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
 
     }
 }
