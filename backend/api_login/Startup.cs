@@ -41,6 +41,11 @@ namespace api_login
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "api_login", Version = "v1" });
             });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAnyCorsPolicy", policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+            });
+
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IRecoverPasswordRepository, RecoverPasswordRepository>();
             services.AddTransient<IAppUser, AppUser>();
@@ -59,6 +64,8 @@ namespace api_login
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("AllowAnyCorsPolicy");
 
             app.UseAuthorization();
 
