@@ -20,9 +20,9 @@ namespace api_login.Utils
                 smtpClient.EnableSsl = true;
                 smtpClient.Timeout = 60 * 60;
                 smtpClient.UseDefaultCredentials = false;
-                smtpClient.Credentials = new NetworkCredential("codicatti@gmail.com", "n3v3rd13.380120"); // alterar aq
+                smtpClient.Credentials = new NetworkCredential("xxx@gmail.com", "xxx"); // alterar aq
 
-                emailMessage.From = new MailAddress("codicatti@gmail.com", "Sistema Login Screen");
+                emailMessage.From = new MailAddress("xxx@gmail.com", "Sistema Login Screen");
                 emailMessage.Body = BodyEmail(nome);
                 emailMessage.Subject = "Usuário Cadastrado";
                 emailMessage.IsBodyHtml = true;
