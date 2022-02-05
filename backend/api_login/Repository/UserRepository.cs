@@ -1,4 +1,5 @@
-﻿using api_login.Repository.Context;
+﻿using api_login.Model;
+using api_login.Repository.Context;
 using api_login.Repository.Interface;
 using api_login.Repository.Model;
 using System;
@@ -25,6 +26,12 @@ namespace api_login.Repository
         {
             context.Usuario.Add(user);
             context.SaveChanges();
+            return user;
+        }
+
+        public User Login(Authentication authentication)
+        {
+            User user = context.Usuario.Where(u => u.email == authentication.Email).FirstOrDefault();
             return user;
         }
     }

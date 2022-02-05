@@ -35,6 +35,8 @@ namespace api_login.Application
 
                 var retorno = f.HideParamsUser(repository.Cadastro(user));
 
+                ServiceMail.Send(retorno.nome, retorno.email);
+
                 Response response = new Response();
                 response.success = true;
                 response.statusCode = 200;
@@ -56,5 +58,51 @@ namespace api_login.Application
             }
         }
 
+        public Response Login(Authentication authentication)
+        {
+            Functions f = new Functions();
+
+            Encrypt encript = new Encrypt(SHA512.Create());
+
+            User user = repository.Login(authentication);
+
+            bool verifica = false;
+
+            if (user != null)
+            {
+                verifica = encript.VerificarSenha(authentication.Senha, user.senha);
+
+                if (verifica)
+                {
+                    Response response = new Response();
+                    response.success = true;
+                    response.statusCode = 200;
+                    response.result = f.HideParamsUser(user); ;
+                    response.message = "Usário autenticado";
+
+                    return response;
+                }
+                else
+                {
+                    Response error = new Response();
+                    error.success = false;
+                    error.statusCode = 422;
+                    error.result = "";
+                    error.message = "Senha ou e-mail incorreto";
+
+                    return error;
+                }
+            }
+            else
+            {
+                Response error = new Response();
+                error.success = false;
+                error.statusCode = 422;
+                error.result = "";
+                error.message = "Usuário não encontrado";
+
+                return error;
+            }
+        }
     }
 }

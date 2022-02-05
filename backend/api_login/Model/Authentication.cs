@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace api_login.Model
 {
-    public class Login
+    public class Authentication
     {
         public string Email { get; set; }
         public string Senha { get; set; }

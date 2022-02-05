@@ -10,5 +10,6 @@ namespace api_login.Application.Interface
     public interface IAppUser
     {
         public Response Cadastrar(User user);
+        public Response Login(Authentication authentication);
     }
 }

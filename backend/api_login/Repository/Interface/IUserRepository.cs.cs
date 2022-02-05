@@ -1,4 +1,5 @@
-﻿using api_login.Repository.Model;
+﻿using api_login.Model;
+using api_login.Repository.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace api_login.Repository.Interface
     public interface IUserRepository
     {
         public User Cadastro(User user);
+        public User Login(Authentication authentication);
     }
 }

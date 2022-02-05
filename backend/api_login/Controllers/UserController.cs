@@ -25,7 +25,7 @@ namespace api_login.Controllers
         // POST: UserController/Create
         [HttpPost("cadastro")]
         //[ValidateAntiForgeryToken]
-        public ActionResult Cadastra(User user)
+        public ActionResult Cadastrar(User user)
         {
             try
             {
@@ -46,20 +46,28 @@ namespace api_login.Controllers
             }
         }
 
-        //// POST: UserController/Create
-        //[HttpPost]
-        ////[ValidateAntiForgeryToken]
-        //public ActionResult Autentica(IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+        [HttpPost("logar")]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Login(Authentication authentication)
+        {
+            try
+            {
+                Response ret = app.Login(authentication);
+
+                if (ret.success)
+                {
+                    return Ok(ret);
+                }
+                else
+                {
+                    return BadRequest(ret);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
 
         //// POST: UserController/Create
         //[HttpPost]
@@ -75,6 +83,6 @@ namespace api_login.Controllers
         //        return View();
         //    }
         //}
-       
+
     }
 }
