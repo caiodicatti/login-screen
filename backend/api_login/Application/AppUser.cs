@@ -5,6 +5,7 @@ using api_login.Repository;
 using api_login.Repository.Interface;
 using api_login.Repository.Model;
 using api_login.Utils;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +19,13 @@ namespace api_login.Application
         //private readonly UserRepository repository;
         public readonly IUserRepository userRepository;
         public readonly IRecoverPasswordRepository recoverPasswordRepository;
+        private readonly IConfiguration configuration;
 
-        public AppUser(IUserRepository _userRepository, IRecoverPasswordRepository _recoverPasswordRepositoryy)
+        public AppUser(IUserRepository _userRepository, IRecoverPasswordRepository _recoverPasswordRepository, IConfiguration _configuration)
         {
             userRepository = _userRepository;
-            recoverPasswordRepository = _recoverPasswordRepositoryy;
+            recoverPasswordRepository = _recoverPasswordRepository;
+            configuration = _configuration;
         }
 
         public Response Cadastrar(User user)
@@ -38,7 +41,7 @@ namespace api_login.Application
 
                 var retorno = f.HideParamsUser(userRepository.Cadastro(user));
 
-                ServiceMail.Send(retorno.nome, retorno.email, "cadastro");
+                ServiceMail.Send(configuration, retorno.nome, retorno.email, "cadastro");
 
                 Response response = new Response();
                 response.success = true;
@@ -123,11 +126,12 @@ namespace api_login.Application
                     email = user.email,
                     codigo = code,
                     validado = "N",
-                };
+                    dataCadastro = DateTime.Now
+            };
 
                 recoverPasswordRepository.InsertData(recover);
 
-                ServiceMail.Send(user.nome, user.email, "recuperação senha", code);
+                ServiceMail.Send(configuration, user.nome, user.email, "recuperação senha", code);
 
                 Response response = new Response();
                 response.success = true;
@@ -155,6 +159,8 @@ namespace api_login.Application
 
             if (verificaLink)
             {
+                Encrypt encript = new Encrypt(SHA512.Create());
+                recoverPasswordLink.Senha = encript.CriptografarSenha(recoverPasswordLink.Senha);
 
                 bool verificaTrocaSenha = userRepository.AlterPassword(recoverPasswordLink);
 

@@ -71,11 +71,11 @@ namespace api_login.Controllers
 
         [HttpPost("recuperarsenha")]
         //[ValidateAntiForgeryToken]
-        public ActionResult RecuperarSenha(Authentication authentication)
+        public ActionResult RecuperarSenha([FromQuery]String email)
         {
             try
             {
-                Response ret = app.Login(authentication);
+                Response ret = app.RecuperarSenha(email);
 
                 if (ret.success)
                 {

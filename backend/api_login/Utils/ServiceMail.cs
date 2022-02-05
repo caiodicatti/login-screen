@@ -1,4 +1,5 @@
 ﻿using api_login.Repository.Model;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,21 +11,27 @@ namespace api_login.Utils
 {
     public class ServiceMail
     {
-        public static void Send(string nome, string email, string tipo, string code = "")
+
+        public static void Send(IConfiguration configuration, string nome, string email, string tipo, string code = "")
         {
+            string emailFrom = configuration["EmailConfig:Email"].ToString();
+            string emailPassword = configuration["EmailConfig:Password"].ToString();            
+            string smtp = configuration["EmailConfig:SMPT"].ToString();            
+            int port = Int32.Parse(configuration["EmailConfig:Port"]);
+
             MailMessage emailMessage = new MailMessage();
 
             string titulo = tipo == "cadastro" ? "Usuário Cadastrado" : "Recuperação de Senha";
 
             try
             {
-                var smtpClient = new SmtpClient("smtp.gmail.com", 587);
+                var smtpClient = new SmtpClient(smtp, port);
                 smtpClient.EnableSsl = true;
                 smtpClient.Timeout = 60 * 60;
                 smtpClient.UseDefaultCredentials = false;
-                smtpClient.Credentials = new NetworkCredential("xxx@gmail.com", "xxx"); // alterar aq
+                smtpClient.Credentials = new NetworkCredential(emailFrom, emailPassword); 
 
-                emailMessage.From = new MailAddress("xxx@gmail.com", "Sistema Login Screen");
+                emailMessage.From = new MailAddress(emailFrom, "Sistema Login Screen");
                 emailMessage.Body = BodyEmail(nome, tipo, code);
                 emailMessage.Subject = titulo;
                 emailMessage.IsBodyHtml = true;
@@ -48,7 +55,7 @@ namespace api_login.Utils
             }
             else
             {
-                return $"<!DOCTYPE html><body>Olá<b> {nome}</b>!<br><a href='localhost:4200/recovery?{code}'>Clique aqui</a> para redefinir sua senha.</body></html>";
+                return $"<!DOCTYPE html><body>Olá<b> {nome}</b>!<br><a href='localhost:4200/recovery?={code}'>Clique aqui</a> para redefinir sua senha.</body></html>";
             }
         }
     }

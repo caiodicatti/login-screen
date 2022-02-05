@@ -42,6 +42,7 @@ namespace api_login
             });
 
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IRecoverPasswordRepository, RecoverPasswordRepository>();
             services.AddTransient<IAppUser, AppUser>();
         }
 
