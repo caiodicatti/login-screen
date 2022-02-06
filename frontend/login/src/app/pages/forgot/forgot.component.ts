@@ -14,6 +14,7 @@ export class ForgotComponent implements OnInit {
   verifyForm: boolean = true;
   mensagem: string = "";
   showDiv: string = "";
+  btnDisabled: boolean = false;
 
   constructor(private fb: FormBuilder,
     private serviceUser: UserService) {
@@ -31,6 +32,7 @@ export class ForgotComponent implements OnInit {
     if (this.forgotForm.valid) {
 
       let email: string = this.forgotForm['controls']['email'].value;
+      this.btnDisabled = true;
 
       this.serviceUser.recuperarsenha(email).subscribe({
         next: (resp: responseDefault) => {
@@ -43,6 +45,7 @@ export class ForgotComponent implements OnInit {
         complete: () => { },
         error: (error) => {
           this.mensagem = error.error.message;
+          this.btnDisabled = false;
         }
       });
     }

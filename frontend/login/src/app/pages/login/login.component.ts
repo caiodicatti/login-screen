@@ -29,8 +29,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-
   }
 
   logar() {
@@ -50,7 +48,7 @@ export class LoginComponent implements OnInit {
 
       this.serviceUser.autenticacao(authSend).subscribe({
         next: (resp: authenticationResponse) => {
-          this.mensagem = resp.message;
+          //this.mensagem = resp.message;
           sessionStorage.setItem('autenticado', 'true');
           sessionStorage.setItem('idUsuario', resp.result.idUsuario.toString());
           sessionStorage.setItem('nome', resp.result.nome);

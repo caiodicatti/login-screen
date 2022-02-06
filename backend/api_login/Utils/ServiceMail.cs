@@ -55,7 +55,19 @@ namespace api_login.Utils
             }
             else
             {
-                return $"<!DOCTYPE html><body>Olá<b> {nome}</b>!<br><a href='localhost:4200/recovery/{code}'>Clique aqui</a> para redefinir sua senha.</body></html>";
+                string email = $"<!DOCTYPE html>";
+                email += $"<html lang='pt-br'>";
+                email += $"<head>";
+                email += $"<meta charset='UTF-8'>";
+                email += $"<meta http-equiv='X-UA-Compatible' content='IE=edge'>";
+                email += $"<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
+                email += $"</head>";
+                email += $"<body>";
+                email += $"Olá<b> {nome}</b>!<br><a href='http://localhost:4200/recovery/{code}'>Clique aqui</a> para redefinir sua senha.";
+                email += $"</body>";
+                email += $"</html>";
+
+                return email;
             }
         }
     }

@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
   senhaEscrita: string = "";
   showNivelPassword: boolean = false;
   verifySizePasswords: boolean = true;
+  btnDisabled: boolean = false;
 
   constructor(private fb: FormBuilder,
     private serviceUser: UserService) {
@@ -46,6 +47,7 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       if (this.verifyPasswords) {
 
+        this.btnDisabled = true;
         let registerSend: register = {
           nome: this.registerForm['controls']['nome'].value,
           email: this.registerForm['controls']['email'].value,
@@ -64,6 +66,7 @@ export class RegisterComponent implements OnInit {
         });
       }
     } else {
+      this.btnDisabled = false;
       this.verifyForm = false;
     }
   }
