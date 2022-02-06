@@ -1,0 +1,32 @@
+.warning-password {
+  border: 1px solid red;
+  border-radius: 4px;
+  /* height: 80px; */
+  padding: 25px;
+  margin-bottom: 12px;
+  color: red;
+  background-color: #ff000021;
+}
+
+.nivel-password {
+  font-size: 15px;
+  border: 1px solid grey;
+  width: 100%;
+  border-radius: 6px;
+  padding: 1px 6px;
+}
+
+.red {
+  color: red;
+  background-color: #ff00002b;
+}
+
+.yellow {
+  color: #9b9b1c;
+  background-color: #ffff002e;
+}
+
+.green {
+  color: green;
+  background-color: #00800024;
+}

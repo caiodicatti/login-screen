@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class='col-md-3'></div>
+    <div class="col-md-6">
+      <div class="login-box well">
+        <form [formGroup]="registerForm" (ngSubmit)="cadastrar()">
+          <legend>Cadastrar</legend>
+          <div class="form-group">
+            <label for="username-email">Nome</label>
+            <input value='' id="nome" placeholder="Nome" type="text" class="form-control" formControlName="nome" #nome
+              [ngClass]="{danger: !verifyForm}" />
+            <div class="invalid-message"
+              *ngIf="registerForm['controls']['nome'].errors && (registerForm['controls']['email'].dirty || registerForm['controls']['email'].touched)">
+              <span>Nome é obrigatório</span>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="username-email">E-mail</label>
+            <input value='' id="email" placeholder="E-mail" type="text" class="form-control" formControlName="email"
+              #email [ngClass]="{danger: !verifyForm}" />
+            <div class="invalid-message"
+              *ngIf="registerForm['controls']['email'].errors && (registerForm['controls']['email'].dirty || registerForm['controls']['email'].touched)">
+              <span>E-mail inválido.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Senha</label>
+            <input id="password1" value='' placeholder="Senha" type="password" class="form-control"
+              formControlName="password1" #password1 [ngClass]="{danger: !verifyForm || !verifyPasswords}"
+              (input)="senhaDigitada(password1.value)">
+          </div>
+
+          <div class="nivel-password {{ testeClass }}" *ngIf="showNivelPassword">
+            <span>{{ msgNivelSenha }}</span>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Confirme a senha</label>
+            <input id="password2" value='' placeholder="Confirme a senha" type="password" class="form-control"
+              formControlName="password2" #password2 [ngClass]="{danger: !verifyForm || !verifyPasswords}" />
+          </div>
+
+          <div class="warning-password" *ngIf="!verifyPasswords">
+            As senhas digitadas não conferem
+          </div>
+
+          <div class="">
+            <button class="submit" class="btn btn-primary btn-default" type="submit">Cadastrar</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+    <div class='col-md-3'></div>
+  </div>
+</div>

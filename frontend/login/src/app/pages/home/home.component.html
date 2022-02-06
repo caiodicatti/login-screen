@@ -1,0 +1,13 @@
+<div class="container">
+  <p *ngIf="autenticado">
+    Olá <span class="name">{{ nomeUsuario }}</span>, seja bem vindo (;
+  </p>
+
+  <p *ngIf="!autenticado">
+    Você não tem permissão para permanecer nessa página.
+  </p>
+
+  <div class="block-button">
+    <button type="button" class="btn btn-info" (click)="destroySession()">{{ textButton }}</button>
+  </div>
+</div>

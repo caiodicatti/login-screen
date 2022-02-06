@@ -1,0 +1,22 @@
+.container {
+  background-color: #fff !important;
+  border-radius: 0 !important;
+  border: black solid 1px;
+  padding: 3%;
+  border: #d1d1d1 solid 1px;
+  margin: 0 auto;
+  margin-top: 30px;
+  text-align: center;
+}
+
+p {
+  font-size: 18px;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.block-button {
+  margin-top: 20%;
+}

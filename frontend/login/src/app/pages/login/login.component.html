@@ -9,13 +9,17 @@
             <label for="username-email">E-mail</label>
             <input value='' id="email" placeholder="E-mail" type="text" class="form-control" formControlName="email"
               #email [ngClass]="{danger: !verifyForm}" />
-            <div class="invalid-feedback">
-              <!-- <span *ngIf="loginForm.controls.email.errors.required">Informe o E-mail</span> -->
+            <div class="invalid-message"
+              *ngIf="loginForm['controls']['email'].errors && (loginForm['controls']['email'].dirty || loginForm['controls']['email'].touched)">
+              <span>E-mail inválido.</span>
+            </div>
+            <div class="invalid-message">
+              <span *ngIf="mensagem != ''">{{ mensagem }}</span>
             </div>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input id="password" value='' placeholder="Password" type="text" class="form-control"
+            <input id="password" value='' placeholder="Password" type="password" class="form-control"
               formControlName="password" #password [ngClass]="{danger: !verifyForm}" />
           </div>
           <div class="">
@@ -24,7 +28,7 @@
           <span class='text-center'><a href="/resetting/request" class="text-sm">Esqueceu a senha?</a></span>
           <div class="form-group">
             <p class="text-center m-t-xs text-sm">Não possui conta ainda?</p>
-            <a href="/register/" class="btn btn-create-account btn-default">Criar conta</a>
+            <a href="http://localhost:4200/register" class="btn btn-create-account btn-default">Criar conta</a>
           </div>
         </form>
       </div>
