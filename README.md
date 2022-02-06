@@ -24,11 +24,11 @@
 
 - Primeiramente rode os scripts sql em seu BD.
 
-- Após, entre na pasta backend e abra o arquivo appsettings.json
+- Após, entre na pasta backend e abra o arquivo appsettings.json .
 
 - Neste arquivo, altere a string "DefaultConnection" com suas credenciais, além disso, no nó "EmailConfig", coloque o SMTP, e-mail e senha conforme desejado, essa configuração é de extrema importância, pois sem ela, os e-mails não serão disparados após a conclusão do cadastro e na página de "Esqueci a senha".
 
-- Assim que terminar a configuração do arquivo appsettings, rodar a API e após isso, iniciar a loja através do comando "ng s"
+- Assim que terminar a configuração do arquivo appsettings, rodar a API e após isso, iniciar a loja através do comando "ng s".
 
 ### Features
 
