@@ -1,0 +1,21 @@
+.div-buttons {
+  margin-top: 18px;
+}
+
+.warning-message {
+  border: 1px solid red;
+  border-radius: 4px;
+  /* height: 80px; */
+  padding: 6px 20px;
+  margin: 12px 0px;
+  color: red;
+  background-color: #ff000021;
+}
+
+.none {
+  display: none;
+}
+
+.block {
+  display: block;
+}

@@ -1,3 +1,4 @@
+import { ForgotComponent } from './pages/forgot/forgot.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'forgot',
+    component: ForgotComponent
   }
 ];
 

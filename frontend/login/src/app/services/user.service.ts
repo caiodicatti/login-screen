@@ -1,3 +1,4 @@
+import { recoverResponse } from './../models/recover';
 import { register, registerResponse } from './../models/register';
 import { authentication, authenticationResponse } from './../models/authentication';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -19,5 +20,9 @@ export class UserService {
 
   cadastrar(register: register) {
     return this.http.post<registerResponse>(`${this.urlBase}/cadastro`, register);
+  }
+
+  recuperarsenha(email: string) {
+    return this.http.post<recoverResponse>(`${this.urlBase}/recuperarsenha?email=${email}`, '');
   }
 }
