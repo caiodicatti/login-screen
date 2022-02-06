@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   verifyForm: boolean = true;
   verifyPasswords: boolean = true;
   msgNivelSenha: string = "";
-  testeClass: string = "";
+  barNivelPassword: string = "";
   senhaEscrita: string = "";
   showNivelPassword: boolean = false;
 
@@ -83,14 +83,14 @@ export class RegisterComponent implements OnInit {
     password.length >= 1 ? this.showNivelPassword = true : this.showNivelPassword = false;
 
     if (password.length < 6) {
-      this.testeClass = "red";
+      this.barNivelPassword = "red";
       this.msgNivelSenha = "Fraca"
     } else {
       if (password.match(numeros) && password.match(alfabeto) && password.match(chEspeciais)) {
-        this.testeClass = "green";
+        this.barNivelPassword = "green";
         this.msgNivelSenha = "Forte"
       } else {
-        this.testeClass = "yellow";
+        this.barNivelPassword = "yellow";
         this.msgNivelSenha = "Médio, insira um caracter especial"
       }
     }

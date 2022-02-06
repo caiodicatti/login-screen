@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class='col-md-3'></div>
+    <div class="col-md-6">
+      <div class="login-box well" *ngIf="formShow">
+        <form [formGroup]="recoveryForm" (ngSubmit)="send()">
+          <legend>Digite a nova senha</legend>
+          <div class="form-group">
+            <label for="password">Senha</label>
+            <input id="password1" value='' placeholder="Senha" type="password" class="form-control"
+              formControlName="password1" #password1 [ngClass]="{danger: !verifyForm || !verifyPasswords}"
+              (input)="senhaDigitada(password1.value)">
+          </div>
+
+          <div class="nivel-password {{ barNivelPassword }}" *ngIf="showNivelPassword">
+            <span>{{ msgNivelSenha }}</span>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Confirme a senha</label>
+            <input id="password2" value='' placeholder="Confirme a senha" type="password" class="form-control"
+              formControlName="password2" #password2 [ngClass]="{danger: !verifyForm || !verifyPasswords}" />
+          </div>
+
+          <div class="warning-password" *ngIf="!verifyPasswords && verifySizePasswords">
+            As senhas digitadas não conferem
+          </div>
+
+          <div class="warning-password" *ngIf="!verifySizePasswords">
+            A senha deve ter no mínimo 8 caracteres
+          </div>
+
+          <div class="">
+            <button class="submit" class="btn btn-primary btn-default" type="submit">Salvar</button>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="box-alert" *ngIf="!formShow">
+        <div class="div-alert {{ backgroundMessageReturn }}">
+          <span class="">{{ messageReturn }}</span>
+        </div>
+
+        <div class="">
+          <button class="submit" class="btn btn-info btn-default" type="button" (click)="return()">Retornar</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class='col-md-3'></div>
+</div>

@@ -1,3 +1,4 @@
+import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ForgotComponent } from './pages/forgot/forgot.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'forgot',
     component: ForgotComponent
+  },
+  {
+    path: 'recovery/:code',
+    component: RecoveryComponent
   }
 ];
 

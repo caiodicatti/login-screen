@@ -1,0 +1,51 @@
+.warning-password {
+  border: 1px solid red;
+  border-radius: 4px;
+  /* height: 80px; */
+  padding: 25px;
+  margin-bottom: 12px;
+  color: red;
+  background-color: #ff000021;
+}
+
+.nivel-password {
+  font-size: 15px;
+  border: 1px solid grey;
+  width: 100%;
+  border-radius: 6px;
+  padding: 1px 6px;
+}
+
+.red {
+  color: red;
+  background-color: #ff00002b;
+}
+
+.yellow {
+  color: #9b9b1c;
+  background-color: #ffff002e;
+}
+
+.green {
+  color: green;
+  background-color: #00800024;
+}
+
+.div-alert {
+  border-radius: 4px;
+  padding: 25px;
+  margin-bottom: 12px;
+  margin-top: 30px;
+}
+
+.div-alert-warning {
+  border: 1px solid #ffdb00;
+  color: #af940f;
+  background-color: #f4ff0030;
+}
+
+.div-alert-success {
+  border: 1px solid #44a50f;
+  color: #44a50f;
+  background-color: #00a10914;
+}

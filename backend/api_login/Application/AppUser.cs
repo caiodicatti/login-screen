@@ -155,12 +155,13 @@ namespace api_login.Application
 
         public Response AlteraSenha(RecoverPasswordLink recoverPasswordLink)
         {
-            bool verificaLink = recoverPasswordRepository.UpdateValidade(recoverPasswordLink.Email);
+            string emailUser = recoverPasswordRepository.UpdateValidade(recoverPasswordLink.Code);
 
-            if (verificaLink)
+            if (emailUser != "")
             {
                 Encrypt encript = new Encrypt(SHA512.Create());
                 recoverPasswordLink.Senha = encript.CriptografarSenha(recoverPasswordLink.Senha);
+                recoverPasswordLink.Email = emailUser;
 
                 bool verificaTrocaSenha = userRepository.AlterPassword(recoverPasswordLink);
 

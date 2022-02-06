@@ -1,4 +1,4 @@
-export interface recoverResponse {
+export interface responseDefault {
     success: boolean;
     statusCode: number;
     result: string;

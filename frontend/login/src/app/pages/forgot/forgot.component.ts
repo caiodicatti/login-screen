@@ -1,4 +1,4 @@
-import { recoverResponse } from './../../models/recover';
+import { responseDefault } from './../../models/response';
 import { UserService } from './../../services/user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -33,7 +33,7 @@ export class ForgotComponent implements OnInit {
       let email: string = this.forgotForm['controls']['email'].value;
 
       this.serviceUser.recuperarsenha(email).subscribe({
-        next: (resp: recoverResponse) => {
+        next: (resp: responseDefault) => {
           alert(resp.message);
 
           if (resp.success) {

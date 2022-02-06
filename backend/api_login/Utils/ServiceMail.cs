@@ -55,7 +55,7 @@ namespace api_login.Utils
             }
             else
             {
-                return $"<!DOCTYPE html><body>Olá<b> {nome}</b>!<br><a href='localhost:4200/recovery?={code}'>Clique aqui</a> para redefinir sua senha.</body></html>";
+                return $"<!DOCTYPE html><body>Olá<b> {nome}</b>!<br><a href='localhost:4200/recovery/{code}'>Clique aqui</a> para redefinir sua senha.</body></html>";
             }
         }
     }

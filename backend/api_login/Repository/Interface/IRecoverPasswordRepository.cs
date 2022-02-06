@@ -9,6 +9,6 @@ namespace api_login.Repository.Interface
     public interface IRecoverPasswordRepository
     {
         public void InsertData(RecoverPassword recoverPassword);
-        public bool UpdateValidade(String email);
+        public string UpdateValidade(String email);
     }
 }

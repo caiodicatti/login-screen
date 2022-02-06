@@ -1,4 +1,5 @@
-import { recoverResponse } from './../models/recover';
+import { recovery } from './../models/recovery';
+import { responseDefault } from './../models/response';
 import { register, registerResponse } from './../models/register';
 import { authentication, authenticationResponse } from './../models/authentication';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -23,6 +24,10 @@ export class UserService {
   }
 
   recuperarsenha(email: string) {
-    return this.http.post<recoverResponse>(`${this.urlBase}/recuperarsenha?email=${email}`, '');
+    return this.http.post<responseDefault>(`${this.urlBase}/recuperarsenha?email=${email}`, '');
+  }
+
+  linkpassword(dataRecovery: recovery) {
+    return this.http.post<responseDefault>(`${this.urlBase}/linkrecuperacao`, dataRecovery);
   }
 }

@@ -28,9 +28,9 @@ namespace api_login.Repository
             context.SaveChanges();            
         }
 
-        public bool UpdateValidade(String email)
+        public string UpdateValidade(String code)
         {
-            RecoverPassword recoverBD = context.RecoverPassword.AsNoTracking().Where(recover => recover.email == email).FirstOrDefault();
+            RecoverPassword recoverBD = context.RecoverPassword.AsNoTracking().Where(recover => recover.codigo == code).FirstOrDefault();
 
             if(recoverBD!= null && recoverBD.validado == "N")
             {
@@ -40,11 +40,11 @@ namespace api_login.Repository
                 context.RecoverPassword.Update(recoverBD);
                 context.SaveChanges();
 
-                return true;
+                return recoverBD.email;
             }
             else
             {
-                return false;
+                return "";
             }
         }
     }
