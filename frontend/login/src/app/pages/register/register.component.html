@@ -43,8 +43,12 @@
               formControlName="password2" #password2 [ngClass]="{danger: !verifyForm || !verifyPasswords}" />
           </div>
 
-          <div class="warning-password" *ngIf="!verifyPasswords">
+          <div class="warning-password" *ngIf="!verifyPasswords && verifySizePasswords">
             As senhas digitadas não conferem
+          </div>
+
+          <div class="warning-password" *ngIf="!verifySizePasswords">
+            A senha deve ter no mínimo 8 caracteres
           </div>
 
           <div class="">

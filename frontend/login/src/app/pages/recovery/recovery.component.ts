@@ -110,7 +110,7 @@ export class RecoveryComponent implements OnInit {
         this.msgNivelSenha = "Forte"
       } else {
         this.barNivelPassword = "yellow";
-        this.msgNivelSenha = "Médio, insira um caracter especial"
+        this.msgNivelSenha = "Médio, insira um caractere especial"
       }
     }
   }

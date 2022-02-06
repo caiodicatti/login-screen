@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
   barNivelPassword: string = "";
   senhaEscrita: string = "";
   showNivelPassword: boolean = false;
+  verifySizePasswords: boolean = true;
 
   constructor(private fb: FormBuilder,
     private serviceUser: UserService) {
@@ -40,6 +41,7 @@ export class RegisterComponent implements OnInit {
 
   cadastrar() {
     this.verifyPasswords = this.verificaSenhasIdenticas();
+    this.verifySizePasswords = this.verificaTamanhoSenha();
 
     if (this.registerForm.valid) {
       if (this.verifyPasswords) {
@@ -74,6 +76,14 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  verificaTamanhoSenha() {
+    if (this.registerForm['controls']['password1'].value.length >= 8) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   senhaDigitada(password: string) {
 
     let numeros = /([0-9])/;
@@ -91,7 +101,7 @@ export class RegisterComponent implements OnInit {
         this.msgNivelSenha = "Forte"
       } else {
         this.barNivelPassword = "yellow";
-        this.msgNivelSenha = "Médio, insira um caracter especial"
+        this.msgNivelSenha = "Médio, insira um caractere especial"
       }
     }
   }
