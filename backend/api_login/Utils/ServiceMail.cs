@@ -51,7 +51,7 @@ namespace api_login.Utils
         {
             if(tipo.ToLower() == "cadastro")
             {
-                return $"<!DOCTYPE html><body>Olá<b> {nome}</b>!<br>Seu e-mail foi cadastrado com sucesso!(;<br><br>Obrigado.</body></html>";
+                return $"<!DOCTYPE html><body>Olá<b> {nome}</b>!<br>Seu e-mail foi cadastrado com sucesso! (;<br><br>Obrigado.</body></html>";
             }
             else
             {
